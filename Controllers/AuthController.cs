@@ -15,7 +15,7 @@ using Okta_SAML_Test.Identity;
 namespace Okta_SAML_Test.Controllers
 {
     [AllowAnonymous]
-    [Route("auth")]
+    [Route("Auth")]
     public class AuthController : Controller
     {
         const string _relayStateReturnUrl = "ReturnUrl";
@@ -36,7 +36,7 @@ namespace Okta_SAML_Test.Controllers
             return binding.Bind(new Saml2AuthnRequest(_config)).ToActionResult();
         }
 
-        [Route("assertion-consumer-service")]
+        [Route("AssertionConsumerService")]
         public async Task<IActionResult> AssertionConsumerService()
         {
             var binding = new Saml2PostBinding();
@@ -55,6 +55,20 @@ namespace Okta_SAML_Test.Controllers
             var returnUrl = relayStateQuery.TryGetValue(_relayStateReturnUrl, out var value) ? value : Url.Content("~/");
             return Redirect(returnUrl);
         }
+
+        [HttpPost("Logout")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Redirect(Url.Content("~/"));
+            }
+
+            _ = await new Saml2LogoutRequest(_config, User).DeleteSession(HttpContext);
+            return Redirect("~/");
+        }
+
 
 
 

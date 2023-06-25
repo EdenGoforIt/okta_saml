@@ -1,0 +1,19 @@
+﻿@page
+@model ClaimsModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>The users Claims (Iteration on User.Claims)</h2>
+        <p>
+            @foreach (var claim in User.Claims)
+            {
+                <strong>@claim.Type</strong>
+                <br/>
+                @claim.Value
+            }
+        </p>
+    </div>
+</div>

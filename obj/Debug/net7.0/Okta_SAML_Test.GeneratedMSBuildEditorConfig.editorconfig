@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Peronsal Projects\Okta_SAML_Test
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Peronsal Projects/Okta_SAML_Test/Pages/Claims.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhaW1zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Peronsal Projects/Okta_SAML_Test/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
